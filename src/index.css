@@ -2,41 +2,67 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ShopSmart Grocery Store Design System */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 14% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 14% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 14% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Fresh green primary theme */
+    --primary: 135 60% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 135 60% 40%;
+    --primary-light: 135 60% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Clean secondary tones */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 210 14% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 14% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 35 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 210 20% 92%;
+    --input: 210 20% 94%;
+    --ring: 135 60% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom grocery store colors */
+    --fresh-green: 135 60% 45%;
+    --organic-green: 120 40% 35%;
+    --warm-orange: 35 100% 50%;
+    --deep-navy: 210 30% 15%;
+    --soft-cream: 45 30% 98%;
+    --light-sage: 120 20% 95%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--fresh-green)), hsl(var(--organic-green)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--light-sage)), hsl(var(--soft-cream)));
+    --gradient-card: linear-gradient(180deg, hsl(var(--background)), hsl(var(--soft-cream)));
+    
+    /* Shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(var(--fresh-green) / 0.1);
+    --shadow-card: 0 4px 12px -4px hsl(var(--deep-navy) / 0.1);
+    --shadow-elevated: 0 8px 24px -8px hsl(var(--deep-navy) / 0.15);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 

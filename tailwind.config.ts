@@ -26,7 +26,9 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					hover: 'hsl(var(--primary-hover))',
+					light: 'hsl(var(--primary-light))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -61,7 +63,28 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// ShopSmart grocery store colors
+				'fresh-green': 'hsl(var(--fresh-green))',
+				'organic-green': 'hsl(var(--organic-green))',
+				'warm-orange': 'hsl(var(--warm-orange))',
+				'deep-navy': 'hsl(var(--deep-navy))',
+				'soft-cream': 'hsl(var(--soft-cream))',
+				'light-sage': 'hsl(var(--light-sage))'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-card': 'var(--gradient-card)'
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'card': 'var(--shadow-card)',
+				'elevated': 'var(--shadow-elevated)'
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)',
+				'bounce': 'var(--transition-bounce)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
