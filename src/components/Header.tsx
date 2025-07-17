@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Search, ShoppingCart, Menu, User } from 'lucide-react';
+import { Search, ShoppingCart, Menu, User, UserCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCart } from '@/contexts/CartContext';
+import { useAuth } from '@/contexts/AuthContext';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
 import { CartDrawer } from './CartDrawer';
+import { AuthModal } from './AuthModal';
+import { UserProfileModal } from './UserProfileModal';
 
 interface HeaderProps {
   onSearch: (query: string) => void;
@@ -14,6 +17,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
   const { getTotalItems } = useCart();
+  const { user } = useAuth();
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
@@ -77,9 +81,23 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
             </Sheet>
 
             {/* Account */}
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <User className="h-5 w-5" />
-            </Button>
+            {user ? (
+              <UserProfileModal
+                trigger={
+                  <Button variant="ghost" size="icon" className="hidden sm:flex">
+                    <UserCircle className="h-5 w-5" />
+                  </Button>
+                }
+              />
+            ) : (
+              <AuthModal
+                trigger={
+                  <Button variant="ghost" size="icon" className="hidden sm:flex">
+                    <User className="h-5 w-5" />
+                  </Button>
+                }
+              />
+            )}
 
             {/* Cart */}
             <Button

@@ -95,15 +95,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
           {/* Price Section */}
           <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center space-x-2">
-              <span className="text-lg font-bold text-primary">
-                ${product.price.toFixed(2)}
+          <div className="flex items-center space-x-2">
+            <span className="text-lg font-bold text-primary">
+              ₹{product.price.toFixed(0)}
+            </span>
+            {product.originalPrice && (
+              <span className="text-sm text-muted-foreground line-through">
+                ₹{product.originalPrice.toFixed(0)}
               </span>
-              {product.originalPrice && (
-                <span className="text-sm text-muted-foreground line-through">
-                  ${product.originalPrice.toFixed(2)}
-                </span>
-              )}
+            )}
             </div>
             <Badge 
               variant="secondary" 

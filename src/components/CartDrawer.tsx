@@ -70,7 +70,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
                   <h4 className="font-medium text-foreground truncate">{item.name}</h4>
                   <p className="text-sm text-muted-foreground">{item.category}</p>
                   <p className="text-lg font-semibold text-primary">
-                    ${item.price.toFixed(2)}
+                    ₹{item.price.toFixed(0)}
                   </p>
                 </div>
 
@@ -117,7 +117,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
           <div className="flex justify-between items-center">
             <span className="text-lg font-semibold">Total:</span>
             <span className="text-2xl font-bold text-primary">
-              ${getTotalPrice().toFixed(2)}
+              ₹{getTotalPrice().toFixed(0)}
             </span>
           </div>
           

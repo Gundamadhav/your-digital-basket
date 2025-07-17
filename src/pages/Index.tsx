@@ -4,6 +4,7 @@ import { Hero } from '@/components/Hero';
 import { Categories } from '@/components/Categories';
 import { ProductCard } from '@/components/ProductCard';
 import { CartProvider } from '@/contexts/CartContext';
+import { AuthProvider } from '@/contexts/AuthContext';
 import { products, getProductsByCategory, searchProducts } from '@/data/products';
 
 const Index = () => {
@@ -41,7 +42,8 @@ const Index = () => {
   };
 
   return (
-    <CartProvider>
+    <AuthProvider>
+      <CartProvider>
       <div className="min-h-screen bg-background">
         <Header onSearch={handleSearch} searchQuery={searchQuery} />
         
@@ -125,21 +127,22 @@ const Index = () => {
               <div className="space-y-4">
                 <h4 className="font-semibold">Customer Service</h4>
                 <ul className="space-y-2 text-sm opacity-80">
-                  <li>📞 1-800-SHOP-SMART</li>
-                  <li>✉️ support@shopsmart.com</li>
-                  <li>🕒 Mon-Fri: 8AM-8PM</li>
-                  <li>🕒 Sat-Sun: 9AM-6PM</li>
+                  <li>📞 +91 1800-SHOP-SMART</li>
+                  <li>✉️ support@shopsmart.in</li>
+                  <li>🕒 Mon-Fri: 8AM-8PM IST</li>
+                  <li>🕒 Sat-Sun: 9AM-6PM IST</li>
                 </ul>
               </div>
             </div>
             
             <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm opacity-80">
-              <p>&copy; 2024 ShopSmart. All rights reserved. | Privacy Policy | Terms of Service</p>
+              <p>&copy; 2024 ShopSmart India. All rights reserved. | Privacy Policy | Terms of Service</p>
             </div>
           </div>
         </footer>
       </div>
     </CartProvider>
+    </AuthProvider>
   );
 };
 

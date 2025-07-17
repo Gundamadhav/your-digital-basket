@@ -10,8 +10,8 @@ export const products: Product[] = [
   {
     id: '1',
     name: 'Organic Red Apples',
-    price: 3.99,
-    originalPrice: 4.99,
+    price: 299,
+    originalPrice: 399,
     image: applesImg,
     category: 'fruits',
     rating: 4.5,
@@ -22,7 +22,7 @@ export const products: Product[] = [
   {
     id: '2',
     name: 'Fresh Bananas',
-    price: 2.49,
+    price: 149,
     image: bananasImg,
     category: 'fruits',
     rating: 4.2,
@@ -33,8 +33,8 @@ export const products: Product[] = [
   {
     id: '3',
     name: 'Artisan Whole Wheat Bread',
-    price: 4.99,
-    originalPrice: 5.99,
+    price: 299,
+    originalPrice: 349,
     image: breadImg,
     category: 'bakery',
     rating: 4.8,
@@ -45,7 +45,7 @@ export const products: Product[] = [
   {
     id: '4',
     name: 'Organic Whole Milk',
-    price: 3.79,
+    price: 89,
     image: milkImg,
     category: 'dairy',
     rating: 4.6,
@@ -56,7 +56,7 @@ export const products: Product[] = [
   {
     id: '5',
     name: 'Free-Range Eggs',
-    price: 4.99,
+    price: 199,
     image: eggsImg,
     category: 'dairy',
     rating: 4.7,
@@ -67,7 +67,7 @@ export const products: Product[] = [
   {
     id: '6',
     name: 'Organic Tomatoes',
-    price: 5.99,
+    price: 249,
     image: tomatoesImg,
     category: 'fruits',
     rating: 4.4,
@@ -78,8 +78,8 @@ export const products: Product[] = [
   {
     id: '7',
     name: 'Premium Coffee Beans',
-    price: 12.99,
-    originalPrice: 15.99,
+    price: 899,
+    originalPrice: 999,
     image: breadImg, // placeholder
     category: 'beverages',
     rating: 4.9,
@@ -90,7 +90,7 @@ export const products: Product[] = [
   {
     id: '8',
     name: 'Greek Yogurt',
-    price: 2.99,
+    price: 179,
     image: milkImg, // placeholder
     category: 'dairy',
     rating: 4.3,
@@ -101,7 +101,7 @@ export const products: Product[] = [
   {
     id: '9',
     name: 'Organic Spinach',
-    price: 3.49,
+    price: 119,
     image: tomatoesImg, // placeholder
     category: 'fruits',
     rating: 4.1,
@@ -112,7 +112,7 @@ export const products: Product[] = [
   {
     id: '10',
     name: 'Sourdough Bread',
-    price: 5.49,
+    price: 329,
     image: breadImg,
     category: 'bakery',
     rating: 4.6,
@@ -123,7 +123,7 @@ export const products: Product[] = [
   {
     id: '11',
     name: 'Organic Carrots',
-    price: 2.99,
+    price: 129,
     image: applesImg, // placeholder
     category: 'fruits',
     rating: 4.0,
@@ -134,7 +134,7 @@ export const products: Product[] = [
   {
     id: '12',
     name: 'Almond Milk',
-    price: 3.99,
+    price: 249,
     image: milkImg,
     category: 'dairy',
     rating: 4.2,

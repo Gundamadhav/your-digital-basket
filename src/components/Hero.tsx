@@ -1,9 +1,12 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Leaf, Truck, Shield } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 import heroImage from '@/assets/hero-grocery.jpg';
 
 export const Hero: React.FC = () => {
+  const { user } = useAuth();
+  
   return (
     <section className="relative overflow-hidden bg-gradient-hero">
       <div className="container mx-auto px-4 py-12 lg:py-20">
@@ -12,14 +15,16 @@ export const Hero: React.FC = () => {
           <div className="space-y-6">
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-                Fresh Groceries
+                {user ? `Welcome back, ${user.name.split(' ')[0]}!` : 'Fresh Groceries'}
                 <span className="bg-gradient-primary bg-clip-text text-transparent block">
-                  Delivered Daily
+                  {user ? 'Ready to shop?' : 'Delivered Daily'}
                 </span>
               </h1>
               <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                Shop the finest selection of organic, local, and fresh groceries. 
-                From farm to your door in under 24 hours.
+                {user 
+                  ? 'Discover fresh, organic products handpicked just for you. Your favorites are waiting!'
+                  : 'Shop the finest selection of organic, local, and fresh groceries. From farm to your door in under 24 hours.'
+                }
               </p>
             </div>
 
