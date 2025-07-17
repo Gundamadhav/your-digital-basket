@@ -141,7 +141,7 @@ const Index = () => {
           </div>
         </footer>
       </div>
-    </CartProvider>
+      </CartProvider>
     </AuthProvider>
   );
 };
