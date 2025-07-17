@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
             {user ? (
               <UserProfileModal
                 trigger={
-                  <Button variant="ghost" size="icon" className="hidden sm:flex">
+                  <Button variant="ghost" size="icon">
                     <UserCircle className="h-5 w-5" />
                   </Button>
                 }
@@ -92,7 +92,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
             ) : (
               <AuthModal
                 trigger={
-                  <Button variant="ghost" size="icon" className="hidden sm:flex">
+                  <Button variant="ghost" size="icon">
                     <User className="h-5 w-5" />
                   </Button>
                 }
@@ -115,11 +115,6 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
                   {getTotalItems()}
                 </Badge>
               )}
-            </Button>
-
-            {/* Mobile menu */}
-            <Button variant="ghost" size="icon" className="sm:hidden">
-              <Menu className="h-5 w-5" />
             </Button>
           </div>
         </div>
