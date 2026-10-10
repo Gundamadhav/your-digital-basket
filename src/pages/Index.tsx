@@ -28,10 +28,17 @@ const Index = () => {
   }, [searchQuery, selectedCategory]);
 
   const handleSearch = (query: string) => {
+    const wasEmpty = !searchQuery.trim();
     setSearchQuery(query);
     // Reset category when searching
     if (query.trim()) {
       setSelectedCategory('all');
+      // Bring results into view as soon as the user starts typing
+      if (wasEmpty) {
+        requestAnimationFrame(() =>
+          document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        );
+      }
     }
   };
 
