@@ -127,8 +127,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
             </Button>
           </div>
         </div>
+        </>
+        )}
       </SheetContent>
-      <CheckoutDialog open={isCheckoutOpen} onOpenChange={setIsCheckoutOpen} />
     </Sheet>
+    </>
   );
 };
