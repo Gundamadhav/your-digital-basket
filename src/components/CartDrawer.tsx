@@ -41,9 +41,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
             <Button variant="hero" onClick={() => onOpenChange(false)}>
               Continue Shopping
             </Button>
-          </div>
-        </SheetContent>
-      </Sheet>
+        </div>
+      </SheetContent>
+    </Sheet>
+    </>
     );
   }
 
