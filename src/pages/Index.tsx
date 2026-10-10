@@ -50,13 +50,15 @@ const Index = () => {
         <main>
           <Hero />
           
-          <Categories 
-            onCategorySelect={handleCategorySelect}
-            selectedCategory={selectedCategory}
-          />
+          <div id="categories">
+            <Categories 
+              onCategorySelect={handleCategorySelect}
+              selectedCategory={selectedCategory}
+            />
+          </div>
           
           {/* Products Section */}
-          <section className="py-12">
+          <section id="products" className="py-12">
             <div className="container mx-auto px-4">
               <div className="flex justify-between items-center mb-8">
                 <div>
@@ -107,20 +109,20 @@ const Index = () => {
               <div className="space-y-4">
                 <h4 className="font-semibold">Quick Links</h4>
                 <ul className="space-y-2 text-sm opacity-80">
-                  <li><a href="#" className="hover:opacity-100">About Us</a></li>
-                  <li><a href="#" className="hover:opacity-100">Contact</a></li>
-                  <li><a href="#" className="hover:opacity-100">FAQs</a></li>
-                  <li><a href="#" className="hover:opacity-100">Support</a></li>
+                  <li><a href="#products" className="hover:opacity-100">Shop Products</a></li>
+                  <li><a href="#categories" className="hover:opacity-100">Browse Categories</a></li>
+                  <li><a href="mailto:support@shopsmart.in" className="hover:opacity-100">Contact Support</a></li>
+                  <li><a href="tel:+911800746276" className="hover:opacity-100">Call Us</a></li>
                 </ul>
               </div>
               
               <div className="space-y-4">
                 <h4 className="font-semibold">Categories</h4>
                 <ul className="space-y-2 text-sm opacity-80">
-                  <li><a href="#" className="hover:opacity-100">Fresh Produce</a></li>
-                  <li><a href="#" className="hover:opacity-100">Dairy & Eggs</a></li>
-                  <li><a href="#" className="hover:opacity-100">Bakery</a></li>
-                  <li><a href="#" className="hover:opacity-100">Beverages</a></li>
+                  <li><button onClick={() => handleCategorySelect('fruits')} className="hover:opacity-100">Fresh Produce</button></li>
+                  <li><button onClick={() => handleCategorySelect('dairy')} className="hover:opacity-100">Dairy & Eggs</button></li>
+                  <li><button onClick={() => handleCategorySelect('bakery')} className="hover:opacity-100">Bakery</button></li>
+                  <li><button onClick={() => handleCategorySelect('beverages')} className="hover:opacity-100">Beverages</button></li>
                 </ul>
               </div>
               
