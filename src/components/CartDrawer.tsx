@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { CheckoutDialog } from './CheckoutDialog';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useCart } from '@/contexts/CartContext';
@@ -13,21 +14,30 @@ interface CartDrawerProps {
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) => {
   const { items, updateQuantity, removeFromCart, getTotalPrice, clearCart } = useCart();
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
-  if (items.length === 0) {
-    return (
-      <Sheet open={open} onOpenChange={onOpenChange}>
-        <SheetContent className="w-full sm:max-w-lg">
-          <SheetHeader>
-            <SheetTitle className="flex items-center gap-2">
-              <ShoppingBag className="h-5 w-5" />
-              Your Cart
-            </SheetTitle>
-            <SheetDescription>
-              Your shopping cart is empty
-            </SheetDescription>
-          </SheetHeader>
-          
+  return (
+    <>
+    <CheckoutDialog
+      open={isCheckoutOpen}
+      onOpenChange={(o) => {
+        setIsCheckoutOpen(o);
+        if (!o && items.length === 0) onOpenChange(false);
+      }}
+    />
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent className="w-full sm:max-w-lg flex flex-col">
+        <SheetHeader>
+          <SheetTitle className="flex items-center gap-2">
+            <ShoppingBag className="h-5 w-5" />
+            Your Cart {items.length > 0 && `(${items.length} items)`}
+          </SheetTitle>
+          <SheetDescription>
+            {items.length === 0 ? 'Your shopping cart is empty' : 'Review your items and proceed to checkout'}
+          </SheetDescription>
+        </SheetHeader>
+
+        {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-64 text-center">
             <ShoppingBag className="h-16 w-16 text-muted-foreground mb-4" />
             <h3 className="text-lg font-semibold mb-2">Your cart is empty</h3>
@@ -38,23 +48,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
               Continue Shopping
             </Button>
           </div>
-        </SheetContent>
-      </Sheet>
-    );
-  }
-
-  return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent className="w-full sm:max-w-lg flex flex-col">
-        <SheetHeader>
-          <SheetTitle className="flex items-center gap-2">
-            <ShoppingBag className="h-5 w-5" />
-            Your Cart ({items.length} items)
-          </SheetTitle>
-          <SheetDescription>
-            Review your items and proceed to checkout
-          </SheetDescription>
-        </SheetHeader>
+        ) : (
+        <>
 
         <ScrollArea className="flex-1 -mx-6 px-6">
           <div className="space-y-4 py-4">
@@ -132,16 +127,16 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
             <Button
               variant="hero"
               className="flex-1"
-              onClick={() => {
-                // TODO: Implement checkout
-                onOpenChange(false);
-              }}
+              onClick={() => setIsCheckoutOpen(true)}
             >
               Checkout
             </Button>
           </div>
         </div>
+        </>
+        )}
       </SheetContent>
     </Sheet>
+    </>
   );
 };
