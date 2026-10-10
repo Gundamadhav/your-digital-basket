@@ -18,6 +18,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
 
   if (items.length === 0) {
     return (
+      <>
+      <CheckoutDialog open={isCheckoutOpen} onOpenChange={setIsCheckoutOpen} />
       <Sheet open={open} onOpenChange={onOpenChange}>
         <SheetContent className="w-full sm:max-w-lg">
           <SheetHeader>
