@@ -19,6 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
   const { getTotalItems } = useCart();
   const { user } = useAuth();
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
@@ -42,10 +43,17 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                type="text"
+                type="search"
                 placeholder="Search for products..."
                 value={searchQuery}
                 onChange={(e) => onSearch(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    setIsSearchOpen(false);
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
                 className="pl-10 pr-4 py-2 w-full bg-light-sage/50 border-fresh-green/20 focus:border-fresh-green focus:ring-fresh-green"
               />
             </div>
@@ -54,7 +62,7 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
           {/* Right section */}
           <div className="flex items-center space-x-2">
             {/* Mobile search */}
-            <Sheet>
+            <Sheet open={isSearchOpen} onOpenChange={setIsSearchOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
                   <Search className="h-5 w-5" />
@@ -70,10 +78,17 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
                 <div className="relative mt-4">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
-                    type="text"
+                    type="search"
                     placeholder="Search for products..."
                     value={searchQuery}
                     onChange={(e) => onSearch(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    setIsSearchOpen(false);
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
                     className="pl-10 pr-4 py-2 w-full"
                   />
                 </div>
@@ -124,10 +139,17 @@ export const Header: React.FC<HeaderProps> = ({ onSearch, searchQuery }) => {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              type="text"
+              type="search"
               placeholder="Search for products..."
               value={searchQuery}
               onChange={(e) => onSearch(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    e.preventDefault();
+                    setIsSearchOpen(false);
+                    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
               className="pl-10 pr-4 py-2 w-full bg-light-sage/50 border-fresh-green/20 focus:border-fresh-green focus:ring-fresh-green"
             />
           </div>
