@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -22,9 +22,18 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({ trigger }) =
     address: user?.address || '',
   });
 
-  const handleUpdateProfile = (e: React.FormEvent) => {
+  useEffect(() => {
+    setProfileData({
+      name: user?.name || '',
+      email: user?.email || '',
+      phone: user?.phone || '',
+      address: user?.address || '',
+    });
+  }, [user, isEditing]);
+
+  const handleUpdateProfile = async (e: React.FormEvent) => {
     e.preventDefault();
-    updateProfile(profileData);
+    await updateProfile({ name: profileData.name, phone: profileData.phone, address: profileData.address });
     setIsEditing(false);
   };
 
@@ -83,8 +92,7 @@ export const UserProfileModal: React.FC<UserProfileModalProps> = ({ trigger }) =
                   id="profile-email"
                   type="email"
                   value={profileData.email}
-                  onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-                  required
+                  disabled
                 />
               </div>
 

@@ -6,13 +6,33 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { User, Mail, Phone, Lock, Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
+import { toast } from '@/hooks/use-toast';
 
 interface AuthModalProps {
   trigger: React.ReactNode;
 }
 
+const GoogleButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
+  <div className="space-y-3">
+    <div className="relative">
+      <div className="absolute inset-0 flex items-center">
+        <span className="w-full border-t border-border" />
+      </div>
+      <div className="relative flex justify-center text-xs uppercase">
+        <span className="bg-background px-2 text-muted-foreground">or</span>
+      </div>
+    </div>
+    <Button type="button" variant="outline" className="w-full" onClick={onClick}>
+      <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="currentColor" d="M21.35 11.1H12v2.98h5.35c-.23 1.4-1.66 4.1-5.35 4.1-3.22 0-5.85-2.67-5.85-5.96S8.78 6.26 12 6.26c1.83 0 3.06.78 3.76 1.45l2.57-2.47C16.7 3.72 14.56 2.8 12 2.8 6.92 2.8 2.8 6.92 2.8 12s4.12 9.2 9.2 9.2c5.31 0 8.83-3.73 8.83-8.99 0-.6-.07-1.06-.15-1.51z" />
+      </svg>
+      Continue with Google
+    </Button>
+  </div>
+);
+
 export const AuthModal: React.FC<AuthModalProps> = ({ trigger }) => {
-  const { login, signup, isLoading } = useAuth();
+  const { login, signup, signInWithGoogle, resetPassword, isLoading } = useAuth();
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('login');
 
@@ -119,10 +139,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({ trigger }) => {
             </form>
 
             <div className="text-center">
-              <p className="text-sm text-muted-foreground">
-                Demo: Use any email and password (min 6 chars)
-              </p>
+              <button
+                type="button"
+                className="text-sm text-primary hover:underline"
+                onClick={async () => {
+                  if (!loginData.email) {
+                    toast({ title: 'Enter your email', description: 'Type your email above, then tap "Forgot password?" again.' });
+                    return;
+                  }
+                  await resetPassword(loginData.email);
+                }}
+              >
+                Forgot password?
+              </button>
             </div>
+            <GoogleButton onClick={signInWithGoogle} />
           </TabsContent>
 
           <TabsContent value="signup" className="space-y-4">
@@ -201,6 +232,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ trigger }) => {
                 )}
               </Button>
             </form>
+            <GoogleButton onClick={signInWithGoogle} />
           </TabsContent>
         </Tabs>
       </DialogContent>
