@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
+import { CheckoutDialog } from './CheckoutDialog';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { useCart } from '@/contexts/CartContext';
@@ -13,6 +14,7 @@ interface CartDrawerProps {
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) => {
   const { items, updateQuantity, removeFromCart, getTotalPrice, clearCart } = useCart();
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   if (items.length === 0) {
     return (
@@ -132,16 +134,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ open, onOpenChange }) =>
             <Button
               variant="hero"
               className="flex-1"
-              onClick={() => {
-                // TODO: Implement checkout
-                onOpenChange(false);
-              }}
+              onClick={() => setIsCheckoutOpen(true)}
             >
               Checkout
             </Button>
           </div>
         </div>
       </SheetContent>
+      <CheckoutDialog open={isCheckoutOpen} onOpenChange={setIsCheckoutOpen} />
     </Sheet>
   );
 };
