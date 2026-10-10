@@ -29,11 +29,20 @@ export const Hero: React.FC = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="hero" className="group">
+              <Button
+                variant="hero"
+                size="hero"
+                className="group"
+                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Shop Now
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button variant="category" size="hero">
+              <Button
+                variant="category"
+                size="hero"
+                onClick={() => document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 View Categories
               </Button>
             </div>
