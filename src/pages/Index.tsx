@@ -39,6 +39,7 @@ const Index = () => {
     setSelectedCategory(category);
     // Clear search when selecting category
     setSearchQuery('');
+    document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
